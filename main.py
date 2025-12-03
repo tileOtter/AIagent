@@ -1,4 +1,5 @@
 import os
+import argparse
 
 from dotenv import load_dotenv
 from google import genai
@@ -12,7 +13,11 @@ def main():
     
     client = genai.Client(api_key=api_key)
 
-    prompt="Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum."
+    parser = argparse.ArgumentParser(description="Chatbot")
+    parser.add_argument("prompt", type=str, help="User prompt")
+    args = parser.parse_args()
+
+    prompt = args.prompt
 
     response = client.models.generate_content(
         model='gemini-2.5-flash', 

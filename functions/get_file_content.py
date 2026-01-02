@@ -15,5 +15,5 @@ def get_file_content(working_directory, file_path):
                 if f.read(1) != None:
                     file_content_string += f'[...File "{file_path}" truncated at {MAX_CHARS} characters]'
                 return file_content_string
-    except:
-        return f'Error: {file_path} does not exist.'
+    except Exception as e:
+        return f'Error: {e}'
